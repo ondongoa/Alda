@@ -508,3 +508,6 @@ h1 em,h2 em,h3 em,.hero__statement em,.africa__title em{font-style:normal;color:
 .legal__table th{width:38%;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400;padding-right:20px;padding-top:17px}
 .legal__date{margin-top:56px;color:var(--muted)}
 @media (max-width:640px){.legal__table th{width:auto;display:block;padding-bottom:0;border:0}.legal__table td{display:block;padding-top:4px}}
+
+/* header bar: always white */
+.nav{background:#fff;border-bottom:1px solid #ececef;padding-top:16px;padding-bottom:16px}
