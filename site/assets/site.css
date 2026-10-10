@@ -290,3 +290,10 @@ img{display:block;max-width:100%}
 .project__bar{flex:1;max-width:220px;height:2px;background:var(--line);position:relative;overflow:hidden}
 .project__bar i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(var(--p,0))}
 @media (max-width:860px){.project{grid-template-columns:1fr;gap:16px}}
+
+/* nav hover / active colour */
+.nav__links a{transition:color .35s ease}
+.nav__links a:hover,.nav__links a.is-active{color:var(--accent)}
+.nav__logo:hover .mono{color:var(--accent);transition:color .35s ease}
+.menu a.menu__link{transition:color .35s ease,padding-left .5s cubic-bezier(.2,.8,.2,1)}
+.menu a.menu__link:hover,.menu a.menu__link.is-active{color:var(--accent);padding-left:12px}
