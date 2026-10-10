@@ -152,7 +152,7 @@ def main():
 
     pages = [
         dict(key='home', url='/', out='index.html', R='', loader=True, three=True,
-             js=['globe.js', 'africa.js'],
+             js=['africa.js'],
              title="ALDA",
              desc="ALDA, entreprise numérique basée à Brazzaville. Intelligence artificielle, logiciels métiers, fintech et transformation numérique pour les entreprises et les professionnels en Afrique.",
              body=read('_home_hero.html') + '\n\n' + read('_home_domains.html') + '\n\n' + read('_home_projects.html')
