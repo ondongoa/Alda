@@ -32,7 +32,18 @@
     el.innerHTML = el.textContent.split('').map(function (c) { return '<span class="char">' + (c === ' ' ? '&nbsp;' : c) + '</span>'; }).join('');
   });
   $$('.js-words').forEach(function (el) {
-    el.innerHTML = el.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
+    var words = el.textContent.trim().split(/\s+/);
+    var hl = {};
+    // data-hl="phrase one|phrase two": those words are set in the accent colour
+    (el.getAttribute('data-hl') || '').split('|').forEach(function (ph) {
+      var pw = ph.trim().split(/\s+/);
+      if (!pw[0]) return;
+      for (var i = 0; i + pw.length <= words.length; i++) {
+        var ok = pw.every(function (w, k) { return words[i + k].replace(/[.,:;!?]+$/, '') === w; });
+        if (ok) for (var k = 0; k < pw.length; k++) hl[i + k] = true;
+      }
+    });
+    el.innerHTML = words.map(function (w, i) { return '<span class="w' + (hl[i] ? ' hl' : '') + '">' + w + '</span>'; }).join(' ');
   });
 
   function done() {
