@@ -60,6 +60,24 @@
     window.location.href = 'mailto:contact@alda-cg.com?subject=' + encodeURIComponent('[Site ALDA] ' + f.sujet.value) + '&body=' + encodeURIComponent(body);
   });
 
+  // cookie notice: remembers the visitor's choice for 12 months (local storage only)
+  var cookie = $('.cookie');
+  function readChoice() {
+    try { var c = JSON.parse(localStorage.getItem('alda-cookies') || 'null'); return c && c.until > Date.now() ? c.value : null; } catch (e) { return null; }
+  }
+  function saveChoice(v) {
+    try { localStorage.setItem('alda-cookies', JSON.stringify({ value: v, until: Date.now() + 365 * 864e5 })); } catch (e) {}
+    hideCookie();
+  }
+  function showCookie() { if (!cookie) return; cookie.hidden = false; requestAnimationFrame(function () { cookie.classList.add('is-visible'); }); }
+  function hideCookie() { if (!cookie) return; cookie.classList.remove('is-visible'); setTimeout(function () { cookie.hidden = true; }, 500); }
+  if (cookie) {
+    if (!readChoice()) setTimeout(showCookie, 1800);
+    $$('.js-cookie-accept').forEach(function (b) { b.addEventListener('click', function () { saveChoice('accepted'); }); });
+    $$('.js-cookie-refuse').forEach(function (b) { b.addEventListener('click', function () { saveChoice('refused'); }); });
+    $$('.js-cookie-open').forEach(function (b) { b.addEventListener('click', showCookie); });
+  }
+
   if (!hasGsap || reduced) {
     root.classList.add('reduced');
     done();

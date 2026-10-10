@@ -66,7 +66,7 @@ def nav(active):
 
 
 def contact_block(line1, line2, cta):
-    return f'''  <section class="contact" id="contact">
+    return f'''  <section class="contact tone-forest" id="contact">
     <span class="mono muted">Contact</span>
     <h2 class="contact__big" style="margin-top:28px">
       <span class="line"><span class="js-up">{line1}</span></span>
@@ -78,8 +78,8 @@ def contact_block(line1, line2, cta):
     <div class="contact__row">
       <div class="reveal"><span class="mono">Email</span><a href="mailto:contact@alda-cg.com" data-hover>contact@alda-cg.com</a></div>
       <div class="reveal"><span class="mono">Téléphone</span><a href="tel:+242050366565" data-hover>+242 05 036 65 65</a><br><a href="tel:+242065740441" data-hover>+242 06 574 04 41</a></div>
-      <div class="reveal"><span class="mono">Adresse</span><p>Brazzaville<br>République du Congo</p></div>
-      <div class="reveal"><span class="mono">Domaines</span><p>AI Kimia<br>Alda Pharma</p></div>
+      <div class="reveal"><span class="mono">Adresse</span><p>97, rue Sainte-Anne, Ouenzé<br>Brazzaville, République du Congo</p></div>
+      <div class="reveal"><span class="mono">Domaines</span><p>Kimia AI<br>Alda Pharma</p></div>
     </div>
   </section>'''
 
@@ -90,6 +90,11 @@ def footer():
     <span>© <span class="js-year">2026</span> ALDA. Tous droits réservés.</span>
     <nav class="foot__links">
 {links}
+    </nav>
+    <nav class="foot__links foot__legal">
+      <a href="/mentions-legales/" data-hover>Mentions légales</a>
+      <a href="/confidentialite/" data-hover>Confidentialité</a>
+      <button type="button" class="foot__cookies js-cookie-open">Cookies</button>
     </nav>
     <a href="#top" data-hover>Haut de page ↑</a>
   </footer>'''
@@ -119,9 +124,7 @@ def layout(p, body):
 <meta property="og:image" content="https://alda-cg.com/assets/img/{p.get("og", "brazzaville-pont.webp")}">
 <link rel="canonical" href="https://alda-cg.com{p["url"]}">
 <link rel="icon" href="{{{{R}}}}assets/logo.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{{{R}}}}assets/fonts.css">
 <link rel="stylesheet" href="{{{{R}}}}assets/site.css">
 </head>
 <body class="loading">
@@ -137,6 +140,14 @@ def layout(p, body):
 
 {footer()}
 </main>
+
+<div class="cookie" role="dialog" aria-live="polite" aria-label="Cookies" hidden>
+  <p><b>Cookies.</b> Ce site n'utilise ni publicité ni mesure d'audience. Il garde seulement en mémoire, sur votre appareil, ce choix et l'affichage de l'animation d'accueil. <a href="/confidentialite/#cookies">En savoir plus</a></p>
+  <div class="cookie__actions">
+    <button type="button" class="btn btn--small js-cookie-accept"><span>Accepter</span></button>
+    <button type="button" class="btn btn--ghost btn--small js-cookie-refuse"><span>Refuser</span></button>
+  </div>
+</div>
 
 {chr(10).join(scripts)}
 </body>
@@ -164,12 +175,12 @@ def main():
                   + '\n\n' + contact_block('Construisons', '<em>ensemble</em>', 'Démarrer un projet')),
         dict(key='domaines', url='/domaines/', out='domaines/index.html', R='../',
              title='Domaines — ALDA',
-             desc="AI Kimia, l'intelligence artificielle pour les professionnels de santé, et Alda Pharma, le logiciel d'officine.",
+             desc="Kimia AI, l'intelligence artificielle pour les professionnels de santé, et Alda Pharma, le logiciel d'officine.",
              body=read('domaines.html').replace('{{PANELS}}', panels)
                   + '\n\n' + contact_block('Une démo ?', '<em>Parlons-en</em>', 'Demander une démo')),
         dict(key='projets', url='/projets/', out='projets/index.html', R='../',
              title='Projets — ALDA',
-             desc="Les projets d'ALDA : Alda Pharma, AI Kimia et nos projets à venir — fintech, traçabilité du médicament, données et éducation numérique.",
+             desc="Les projets d'ALDA : Alda Pharma, Kimia AI et nos projets à venir — fintech, traçabilité du médicament, données et éducation numérique.",
              body=read('_projets_main.html') + '\n\n' + contact_block('Un projet', 'en <em>tête</em> ?', 'Nous écrire')),
         dict(key='a-propos', url='/a-propos/', out='a-propos/index.html', R='../', og='brazzaville-fleuve.webp',
              title='À propos — ALDA',
@@ -179,6 +190,14 @@ def main():
              title='Contact — ALDA',
              desc="Contactez ALDA à Brazzaville : contact@alda-cg.com, +242 05 036 65 65, +242 06 574 04 41.",
              body=read('contact.html')),
+        dict(key='legal', url='/mentions-legales/', out='mentions-legales/index.html', R='../',
+             title='Mentions légales — ALDA',
+             desc="Mentions légales du site alda-cg.com : éditeur, hébergeur, propriété intellectuelle.",
+             body=read('mentions-legales.html')),
+        dict(key='privacy', url='/confidentialite/', out='confidentialite/index.html', R='../',
+             title='Politique de confidentialité — ALDA',
+             desc="Comment ALDA traite vos données personnelles et utilise les cookies sur alda-cg.com.",
+             body=read('confidentialite.html')),
     ]
     for p in pages:
         html = layout(p, p['body'])

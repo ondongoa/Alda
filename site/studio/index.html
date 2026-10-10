@@ -10,9 +10,7 @@
 <meta property="og:image" content="https://alda-cg.com/assets/img/brazzaville-pont.webp">
 <link rel="canonical" href="https://alda-cg.com/studio/">
 <link rel="icon" href="../assets/logo.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body class="loading">
@@ -54,7 +52,7 @@
 
 <main id="top">
 
-  <section class="page-hero">
+  <section class="page-hero tone-sand">
     <span class="mono muted reveal">(00) — Studio</span>
     <h1 class="page-hero__title" aria-label="Studio"><span class="line js-split">Studio</span></h1>
     <div class="page-hero__row">
@@ -66,6 +64,7 @@
   <section class="sec">
     <div class="manifesto">
       <span class="mono muted">(01) — Ce que nous faisons</span>
+      <img class="float-thumb reveal" src="../assets/img/illustration-alda.webp" alt="" loading="lazy">
       <div>
         <p class="manifesto__text js-words" data-hl="produits numériques|Intelligence artificielle|fintech">Nous transformons des besoins concrets en produits numériques fiables. Intelligence artificielle, logiciels métiers, données et fintech : nous concevons, développons et accompagnons chaque solution, de la première idée jusqu'à son utilisation au quotidien.</p>
         <div class="manifesto__foot">
@@ -93,7 +92,7 @@
 
 
   <!-- interests -->
-  <section class="sec" style="padding-top:0">
+  <section class="sec tone-sage">
     <div class="sec__head">
       <span class="mono muted">(03) — Innovation</span>
       <h2 class="sec__title"><span class="line"><span class="js-up">Ce qui nous</span></span><span class="line"><span class="js-up">fait <em>avancer</em></span></span></h2>
@@ -152,7 +151,7 @@
 
 
 
-  <section class="contact" id="contact">
+  <section class="contact tone-forest" id="contact">
     <span class="mono muted">Contact</span>
     <h2 class="contact__big" style="margin-top:28px">
       <span class="line"><span class="js-up">Construisons</span></span>
@@ -164,8 +163,8 @@
     <div class="contact__row">
       <div class="reveal"><span class="mono">Email</span><a href="mailto:contact@alda-cg.com" data-hover>contact@alda-cg.com</a></div>
       <div class="reveal"><span class="mono">Téléphone</span><a href="tel:+242050366565" data-hover>+242 05 036 65 65</a><br><a href="tel:+242065740441" data-hover>+242 06 574 04 41</a></div>
-      <div class="reveal"><span class="mono">Adresse</span><p>Brazzaville<br>République du Congo</p></div>
-      <div class="reveal"><span class="mono">Domaines</span><p>AI Kimia<br>Alda Pharma</p></div>
+      <div class="reveal"><span class="mono">Adresse</span><p>97, rue Sainte-Anne, Ouenzé<br>Brazzaville, République du Congo</p></div>
+      <div class="reveal"><span class="mono">Domaines</span><p>Kimia AI<br>Alda Pharma</p></div>
     </div>
   </section>
 
@@ -178,9 +177,22 @@
       <a href="/a-propos/" data-hover>À propos</a>
       <a href="/contact/" data-hover>Contact</a>
     </nav>
+    <nav class="foot__links foot__legal">
+      <a href="/mentions-legales/" data-hover>Mentions légales</a>
+      <a href="/confidentialite/" data-hover>Confidentialité</a>
+      <button type="button" class="foot__cookies js-cookie-open">Cookies</button>
+    </nav>
     <a href="#top" data-hover>Haut de page ↑</a>
   </footer>
 </main>
+
+<div class="cookie" role="dialog" aria-live="polite" aria-label="Cookies" hidden>
+  <p><b>Cookies.</b> Ce site n'utilise ni publicité ni mesure d'audience. Il garde seulement en mémoire, sur votre appareil, ce choix et l'affichage de l'animation d'accueil. <a href="/confidentialite/#cookies">En savoir plus</a></p>
+  <div class="cookie__actions">
+    <button type="button" class="btn btn--small js-cookie-accept"><span>Accepter</span></button>
+    <button type="button" class="btn btn--ghost btn--small js-cookie-refuse"><span>Refuser</span></button>
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
