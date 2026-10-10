@@ -4,205 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ALDA — Le numérique au service de la santé</title>
-<meta name="description" content="ALDA, studio numérique basé à Brazzaville. AI Kimia, Pharma Alda et L'Officine : des solutions d'intelligence artificielle et de gestion pour les professionnels de santé et de la pharmacie.">
+<meta name="description" content="ALDA, entreprise numérique basée à Brazzaville. AI Kimia et Alda Pharma : intelligence artificielle et logiciel d'officine pour les professionnels de santé et de la pharmacie en Afrique.">
 <meta property="og:title" content="ALDA — Le numérique au service de la santé">
-<meta property="og:description" content="AI Kimia, Pharma Alda, L'Officine. Des outils numériques pour les professionnels de santé en Afrique.">
-<meta property="og:image" content="assets/logo.jpg">
+<meta property="og:description" content="AI Kimia et Alda Pharma : des outils numériques pour les professionnels de santé en Afrique.">
+<meta property="og:image" content="assets/img/brazzaville-pont.webp">
 <link rel="icon" href="assets/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#ffffff;
-  --ink:#0b0b0c;
-  --muted:#76767c;
-  --line:#e7e7ea;
-  --soft:#f6f6f7;
-  --accent:#1d3bff;
-  --display:'Montserrat',system-ui,sans-serif;
-  --body:'Inter',system-ui,sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,monospace;
-  --gutter:clamp(16px,4vw,56px);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-html.lenis,html.lenis body{height:auto}
-.lenis.lenis-smooth{scroll-behavior:auto!important}
-body{font-family:var(--body);font-weight:300;line-height:1.55;background:var(--bg);overflow-x:hidden}
-body.loading{overflow:hidden}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-::selection{background:var(--ink);color:#fff}
-
-/* ---------- utilities ---------- */
-.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-.muted{color:var(--muted)}
-.wrap{padding:0 var(--gutter)}
-.line{display:block;overflow:hidden}
-.line>span{display:inline-block;will-change:transform}
-.char{display:inline-block;will-change:transform}
-
-/* ---------- preloader ---------- */
-.loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;justify-content:space-between;padding:var(--gutter)}
-.loader__top{display:flex;justify-content:space-between}
-.loader__count{font-family:var(--display);font-weight:100;font-size:clamp(96px,22vw,320px);line-height:.8;letter-spacing:-.04em;align-self:flex-end}
-.loader__bar{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--ink);transform-origin:left;transform:scaleX(0)}
-
-/* ---------- cursor ---------- */
-.cursor{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--ink);pointer-events:none;z-index:90;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1),background .3s}
-.cursor.is-hover{width:72px;height:72px;background:#fff}
-.cursor__label{position:fixed;top:0;left:0;pointer-events:none;z-index:91;transform:translate(-50%,-50%);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.1em;opacity:0;transition:opacity .25s;mix-blend-mode:difference}
-@media (hover:none){.cursor,.cursor__label{display:none}}
-
-/* ---------- nav ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px var(--gutter);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.nav.is-hidden{transform:translateY(-110%)}
-.nav__logo{display:flex;align-items:center;gap:12px}
-.nav__logo img{width:40px;height:40px;object-fit:contain;mix-blend-mode:multiply}
-.nav__links{display:flex;gap:32px}
-.nav__links a{position:relative}
-.nav__links a::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.nav__links a:hover::after{transform:scaleX(1);transform-origin:left}
-.nav__meta{justify-self:end;display:flex;gap:20px;align-items:center}
-.nav__dot{width:7px;height:7px;border-radius:50%;background:#19c37d;display:inline-block;margin-right:8px;box-shadow:0 0 0 0 rgba(25,195,125,.5);animation:pulse 2.2s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(25,195,125,0)}100%{box-shadow:0 0 0 0 rgba(25,195,125,0)}}
-.nav__burger{display:none;background:none;border:0;cursor:pointer;font:inherit}
-@media (max-width:860px){
-  .nav{grid-template-columns:1fr auto}
-  .nav__links{display:none}
-  .nav__meta .clock{display:none}
-}
-
-/* ---------- hero ---------- */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:120px var(--gutter) 32px;position:relative}
-.hero__specs{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--line);padding-top:18px}
-.hero__spec b{font-weight:400;display:block;color:var(--muted);margin-bottom:6px}
-.hero__spec span{font-family:var(--body);font-size:15px;letter-spacing:0;text-transform:none;color:var(--ink)}
-.hero__title{font-family:var(--display);font-weight:100;text-transform:uppercase;line-height:.86;letter-spacing:-.045em;font-size:clamp(88px,33vw,600px);margin:auto 0 0;white-space:nowrap}
-.hero__title .char{transform:translateY(105%)}
-.hero__title .line{padding-bottom:.04em}
-.hero__sub{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:28px}
-.hero__lead{font-family:var(--display);font-weight:300;font-size:clamp(20px,2.3vw,34px);line-height:1.15;max-width:22ch;letter-spacing:-.01em}
-.hero__scroll{display:flex;align-items:center;gap:12px}
-.hero__scroll i{display:block;width:1px;height:48px;background:var(--ink);transform-origin:top;animation:drip 2s cubic-bezier(.6,0,.2,1) infinite}
-@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-@media (max-width:860px){
-  .hero__specs{grid-template-columns:1fr 1fr;row-gap:16px}
-  .hero__sub{flex-direction:column;align-items:flex-start}
-}
-
-/* ---------- marquee ---------- */
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:26px 0;white-space:nowrap}
-.marquee__track{display:inline-flex;gap:56px;will-change:transform}
-.marquee__item{font-family:var(--display);font-weight:200;font-size:clamp(34px,5vw,72px);text-transform:uppercase;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:56px}
-.marquee__item::after{content:"";width:14px;height:14px;border-radius:50%;background:var(--accent)}
-
-/* ---------- section header ---------- */
-.sec{padding:clamp(96px,14vw,200px) var(--gutter)}
-.sec__head{display:grid;grid-template-columns:200px 1fr;gap:32px;margin-bottom:clamp(48px,7vw,96px)}
-.sec__title{font-family:var(--display);font-weight:200;font-size:clamp(44px,7.4vw,124px);line-height:.95;letter-spacing:-.035em;text-transform:uppercase}
-@media (max-width:860px){.sec__head{grid-template-columns:1fr;gap:16px}}
-
-/* ---------- manifesto ---------- */
-.manifesto{display:grid;grid-template-columns:200px 1fr;gap:32px}
-.manifesto__text{font-family:var(--display);font-weight:300;font-size:clamp(28px,3.8vw,58px);line-height:1.12;letter-spacing:-.02em}
-.manifesto__text .w{opacity:.12;transition:none}
-.manifesto__foot{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:clamp(56px,7vw,96px);border-top:1px solid var(--line);padding-top:24px}
-.manifesto__foot p{font-size:16px;max-width:34ch;color:#3a3a3f}
-.manifesto__foot .mono{display:block;margin-bottom:10px;color:var(--muted)}
-@media (max-width:860px){.manifesto{grid-template-columns:1fr}.manifesto__foot{grid-template-columns:1fr}}
-
-/* ---------- domains list ---------- */
-.domains{border-top:1px solid var(--ink)}
-.domain{position:relative;display:grid;grid-template-columns:80px 1.2fr 1fr 40px;gap:24px;align-items:center;padding:clamp(28px,3.4vw,48px) 0;border-bottom:1px solid var(--line);cursor:pointer;overflow:hidden}
-.domain::before{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .7s cubic-bezier(.7,0,.2,1);z-index:0}
-.domain>*{position:relative;z-index:1;transition:color .5s,transform .7s cubic-bezier(.2,.8,.2,1)}
-.domain:hover::before{transform:scaleY(1);transform-origin:top}
-.domain:hover>*{color:#fff}
-.domain:hover .domain__name{transform:translateX(24px)}
-.domain__name{font-family:var(--display);font-weight:200;font-size:clamp(40px,6.2vw,104px);line-height:1;letter-spacing:-.035em;text-transform:uppercase}
-.domain__desc{font-size:15px;max-width:40ch;color:#3a3a3f}
-.domain__arrow{width:36px;height:36px;transition:transform .6s cubic-bezier(.2,.8,.2,1)!important}
-.domain:hover .domain__arrow{transform:rotate(-45deg)}
-.domain__preview{position:fixed;top:0;left:0;width:320px;height:220px;pointer-events:none;z-index:40;border-radius:6px;overflow:hidden;opacity:0;transform:translate(-50%,-50%) scale(.6)}
-@media (max-width:860px){
-  .domain{grid-template-columns:44px 1fr 28px}
-  .domain__desc{grid-column:2/3}
-  .domain__arrow{grid-row:1;grid-column:3;width:24px;height:24px}
-  .domain__preview{display:none}
-}
-
-/* ---------- product panels (horizontal) ---------- */
-.hscroll{position:relative;overflow:hidden;background:var(--soft)}
-.hscroll__track{display:flex;height:100svh;width:max-content;will-change:transform}
-.panel{width:100vw;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;padding:110px var(--gutter) 60px}
-.panel__index{font-family:var(--display);font-weight:100;font-size:clamp(120px,18vw,300px);line-height:.8;letter-spacing:-.05em;color:var(--ink)}
-.panel__name{font-family:var(--display);font-weight:300;font-size:clamp(36px,4.6vw,76px);letter-spacing:-.03em;line-height:1;margin:20px 0 22px;text-transform:uppercase}
-.panel__body{font-size:17px;max-width:46ch;color:#36363b}
-.panel__list{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
-.panel__list li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
-.panel__list li span:last-child{color:var(--muted)}
-.panel__visual{position:relative;aspect-ratio:1/1;max-height:70svh;justify-self:center;width:100%;max-width:560px}
-.panel__visual svg{width:100%;height:100%}
-.tag{display:inline-block;border:1px solid var(--ink);border-radius:99px;padding:6px 14px}
-@media (max-width:860px){
-  .hscroll__track{flex-direction:column;height:auto;width:100%}
-  .panel{width:100%;height:auto;grid-template-columns:1fr;padding:80px var(--gutter)}
-  .panel__visual{max-width:360px}
-}
-
-/* ---------- innovation grid ---------- */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.cell{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(28px,3vw,44px);min-height:clamp(260px,26vw,360px);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.cell>div{flex:1;display:flex;flex-direction:column}
-.cell__icon{width:44px;height:44px;margin:28px 0 auto}
-.cell__icon *{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-.cell:hover .cell__icon .spin{transform:rotate(90deg)}
-.cell h3{font-family:var(--display);font-weight:300;font-size:clamp(22px,2vw,30px);letter-spacing:-.02em;line-height:1.1;margin:28px 0 12px}
-.cell p{font-size:15px;color:#4a4a50;max-width:36ch}
-.cell .mono{color:var(--muted)}
-.cell::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-.cell:hover::after{transform:scaleX(1)}
-@media (max-width:1000px){.grid{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){.grid{grid-template-columns:1fr}}
-
-/* ---------- approach ---------- */
-.steps{counter-reset:s}
-.step{display:grid;grid-template-columns:200px 1fr 1fr;gap:32px;padding:36px 0;border-top:1px solid var(--line)}
-.step:last-child{border-bottom:1px solid var(--line)}
-.step h3{font-family:var(--display);font-weight:300;font-size:clamp(26px,3vw,44px);letter-spacing:-.02em;line-height:1}
-.step p{font-size:16px;color:#4a4a50;max-width:44ch}
-@media (max-width:860px){.step{grid-template-columns:1fr;gap:12px}}
-
-/* ---------- contact ---------- */
-.contact{padding:clamp(96px,14vw,200px) var(--gutter) 40px;border-top:1px solid var(--line)}
-.contact__big{font-family:var(--display);font-weight:100;text-transform:uppercase;font-size:clamp(44px,11.4vw,200px);line-height:.88;letter-spacing:-.045em}
-.contact__big a{display:inline-block;position:relative}
-.contact__row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:clamp(56px,8vw,120px);border-top:1px solid var(--ink);padding-top:24px}
-.contact__row .mono{display:block;color:var(--muted);margin-bottom:10px}
-.contact__row a,.contact__row p{font-size:17px}
-.contact__row a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s cubic-bezier(.2,.8,.2,1)}
-.contact__row a:hover{background-size:100% 1px}
-.btn{display:inline-flex;align-items:center;gap:14px;border:1px solid var(--ink);border-radius:99px;padding:18px 30px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;position:relative;overflow:hidden;transition:color .5s}
-.btn::before{content:"";position:absolute;inset:0;background:var(--ink);border-radius:99px;transform:translateY(101%);transition:transform .5s cubic-bezier(.7,0,.2,1)}
-.btn:hover{color:#fff}
-.btn:hover::before{transform:translateY(0)}
-.btn span{position:relative}
-.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0 0;margin-top:clamp(56px,8vw,120px);border-top:1px solid var(--line);color:var(--muted)}
-@media (max-width:860px){.contact__row{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.contact__row{grid-template-columns:1fr}}
-
-/* reveal defaults (JS animates them in) */
-.reveal{opacity:0;transform:translateY(40px)}
-.no-js .reveal,.reduced .reveal{opacity:1;transform:none}
-.reduced .hero__title .char{transform:none}
-.reduced .manifesto__text .w{opacity:1}
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body class="loading">
 
-<!-- preloader -->
 <div class="loader" aria-hidden="true">
   <div class="loader__top mono"><span>ALDA</span><span>Brazzaville — CG</span></div>
   <div class="loader__count"><span class="js-count">0</span></div>
@@ -212,7 +25,6 @@ img{display:block;max-width:100%}
 <div class="cursor" aria-hidden="true"></div>
 <div class="cursor__label" aria-hidden="true">Voir</div>
 
-<!-- nav -->
 <header class="nav">
   <a href="#top" class="nav__logo" data-hover>
     <img src="assets/logo.jpg" alt="Logo ALDA">
@@ -221,51 +33,60 @@ img{display:block;max-width:100%}
   <nav class="nav__links mono" aria-label="Navigation principale">
     <a href="#studio" data-hover>Studio</a>
     <a href="#domaines" data-hover>Domaines</a>
-    <a href="#innovation" data-hover>Innovation</a>
+    <a href="projets.html" data-hover>Projets</a>
+    <a href="about.html" data-hover>À propos</a>
     <a href="#contact" data-hover>Contact</a>
   </nav>
   <div class="nav__meta mono">
     <span class="clock"><span class="js-clock">--:--</span> BZV</span>
-    <span><i class="nav__dot"></i>Disponible</span>
+    <span class="status"><i class="nav__dot"></i>Disponible</span>
+    <button class="nav__burger mono js-menu-open" aria-label="Ouvrir le menu">Menu</button>
   </div>
 </header>
 
+<div class="menu" aria-label="Menu mobile">
+  <button class="menu__close mono js-menu-close" aria-label="Fermer le menu">Fermer</button>
+  <nav>
+    <a class="menu__link" href="#studio">Studio</a>
+    <a class="menu__link" href="#domaines">Domaines</a>
+    <a class="menu__link" href="projets.html">Projets</a>
+    <a class="menu__link" href="about.html">À propos</a>
+    <a class="menu__link" href="#contact">Contact</a>
+  </nav>
+  <div class="mono muted">contact@alda-cg.com</div>
+</div>
+
 <main id="top">
 
-  <!-- hero -->
   <section class="hero">
     <div class="hero__specs mono">
-      <div class="hero__spec reveal"><b>01.</b><span>Studio numérique</span></div>
-      <div class="hero__spec reveal"><b>02.</b><span>Basé à Brazzaville</span></div>
+      <div class="hero__spec reveal"><b>01.</b><span>Entreprise numérique</span></div>
+      <div class="hero__spec reveal"><b>02.</b><span>Basée à Brazzaville</span></div>
       <div class="hero__spec reveal"><b>03.</b><span>Santé · Pharmacie · IA</span></div>
-      <div class="hero__spec reveal"><b>04.</b><span>Afrique centrale</span></div>
+      <div class="hero__spec reveal"><b>04.</b><span>Pour toute l'Afrique</span></div>
     </div>
-
     <h1 class="hero__title" aria-label="ALDA"><span class="line js-split">ALDA</span></h1>
-
     <div class="hero__sub">
       <p class="hero__lead reveal">Le numérique au service de celles et ceux qui soignent.</p>
       <div class="hero__scroll mono reveal"><i></i>Défiler</div>
     </div>
   </section>
 
-  <!-- marquee -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee__track js-marquee">
       <span class="marquee__item">Intelligence artificielle</span>
       <span class="marquee__item">Professionnels de santé</span>
-      <span class="marquee__item">Pharmacie</span>
-      <span class="marquee__item">Officine</span>
+      <span class="marquee__item">Logiciel d'officine</span>
+      <span class="marquee__item">Données de santé</span>
       <span class="marquee__item">Innovation</span>
       <span class="marquee__item">Intelligence artificielle</span>
       <span class="marquee__item">Professionnels de santé</span>
-      <span class="marquee__item">Pharmacie</span>
-      <span class="marquee__item">Officine</span>
+      <span class="marquee__item">Logiciel d'officine</span>
+      <span class="marquee__item">Données de santé</span>
       <span class="marquee__item">Innovation</span>
     </div>
   </div>
 
-  <!-- studio / manifesto -->
   <section class="sec" id="studio">
     <div class="manifesto">
       <span class="mono muted">(01) — Studio</span>
@@ -273,20 +94,39 @@ img{display:block;max-width:100%}
         <p class="manifesto__text js-words">ALDA conçoit des outils numériques pour les professionnels de santé et de la pharmacie. Nous mettons l'intelligence artificielle, la donnée et le design au service d'un objectif simple : un meilleur accès aux soins et aux médicaments, en Afrique et au-delà.</p>
         <div class="manifesto__foot">
           <div class="reveal"><span class="mono">Mission</span><p>Donner aux soignants, pharmaciens et officines des outils fiables, pensés pour leur réalité de terrain.</p></div>
-          <div class="reveal"><span class="mono">Vision</span><p>Un écosystème de santé connecté, où l'information circule vite et en sécurité, du laboratoire jusqu'au patient.</p></div>
+          <div class="reveal"><span class="mono">Vision</span><p>Un écosystème de santé connecté, où l'information circule vite et en sécurité, du fournisseur jusqu'au patient.</p></div>
           <div class="reveal"><span class="mono">Ancrage</span><p>Une équipe à Brazzaville, au plus près des professionnels avec qui nous construisons nos produits.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- domains list -->
-  <section class="sec" id="domaines" style="padding-top:0">
+  <!-- Africa point cloud -->
+  <section class="africa js-africa-section" aria-label="ALDA en Afrique">
+    <div class="js-africa" style="position:absolute;inset:0"></div>
+    <div class="africa__copy">
+      <span class="mono muted">(02) — Afrique</span>
+      <h2 class="africa__title">
+        <span class="line"><span>Depuis Brazzaville,</span></span>
+        <span class="line"><span>pour tout</span></span>
+        <span class="line"><span>le continent</span></span>
+      </h2>
+    </div>
+    <div class="africa__label mono js-africa-label"><b>Brazzaville</b> · 4°16′S 15°17′E</div>
+    <div class="africa__progress mono muted" aria-hidden="true">
+      <span>Sphère</span><span>Réseau</span><span>Afrique</span>
+    </div>
+    <div class="africa__foot">
+      <p>Chaque point est une pharmacie, un soignant, une donnée. Nous construisons le réseau qui les relie, à partir du Congo.</p>
+      <span class="mono muted">Brazzaville · République du Congo</span>
+    </div>
+  </section>
+
+  <section class="sec" id="domaines">
     <div class="sec__head">
-      <span class="mono muted">(02) — Domaines</span>
+      <span class="mono muted">(03) — Domaines</span>
       <h2 class="sec__title"><span class="line"><span class="js-up">Nos</span></span><span class="line"><span class="js-up">domaines</span></span></h2>
     </div>
-
     <div class="domains">
       <a class="domain" href="#p-kimia" data-preview="kimia" data-hover="Voir">
         <span class="mono">01</span>
@@ -296,21 +136,16 @@ img{display:block;max-width:100%}
       </a>
       <a class="domain" href="#p-pharma" data-preview="pharma" data-hover="Voir">
         <span class="mono">02</span>
-        <span class="domain__name">Pharma Alda</span>
-        <span class="domain__desc">Des solutions numériques pour la chaîne du médicament.</span>
-        <svg class="domain__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a class="domain" href="#p-officine" data-preview="officine" data-hover="Voir">
-        <span class="mono">03</span>
-        <span class="domain__name">L'Officine</span>
-        <span class="domain__desc">La gestion moderne de la pharmacie d'officine.</span>
+        <span class="domain__name">Alda Pharma</span>
+        <span class="domain__desc">Le logiciel d'officine où vos données restent les vôtres.</span>
         <svg class="domain__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
     <div class="domain__preview js-preview" aria-hidden="true"></div>
+    <template id="preview-kimia"><svg viewBox="0 0 320 220" width="100%" height="100%"><rect width="320" height="220" fill="#0b0b0c"/><circle cx="160" cy="110" r="70" fill="none" stroke="#fff" stroke-width="1"/><circle cx="160" cy="110" r="10" fill="#1d3bff"/><text x="20" y="200" fill="#fff" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="1">AI KIMIA — IA SANTÉ</text></svg></template>
+    <template id="preview-pharma"><img src="assets/img/alda-pharma-apercu.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 50%"></template>
   </section>
 
-  <!-- product panels, horizontal scroll -->
   <section class="hscroll js-hscroll">
     <div class="hscroll__track js-htrack">
 
@@ -347,135 +182,76 @@ img{display:block;max-width:100%}
       <article class="panel" id="p-pharma">
         <div>
           <div class="panel__index">02</div>
-          <h3 class="panel__name">Pharma Alda</h3>
-          <p class="panel__body">Des outils pour les acteurs du médicament : suivi des produits, approvisionnement et traçabilité, pour des médicaments disponibles et sûrs, là où on en a besoin.</p>
-          <ul class="panel__list">
-            <li><span>Pour</span><span>Grossistes, laboratoires, pharmacies</span></li>
-            <li><span>Enjeux</span><span>Disponibilité, traçabilité</span></li>
-            <li><span>Approche</span><span>Données en temps réel</span></li>
-          </ul>
-        </div>
-        <div class="panel__visual" aria-hidden="true">
-          <svg viewBox="0 0 400 400" fill="none" stroke="#0b0b0c" stroke-width="1">
-            <g class="js-pills">
-              <rect x="70" y="150" width="260" height="100" rx="50"/>
-              <path d="M200 150 V250"/>
-              <path d="M200 150 H280 A50 50 0 0 1 280 250 H200 Z" fill="#0b0b0c" stroke="none"/>
-            </g>
-            <g stroke="#e1e1e5">
-              <path d="M40 80 H360 M40 320 H360"/>
-            </g>
-            <g class="js-dots" fill="#1d3bff" stroke="none">
-              <circle cx="60" cy="80" r="4"/><circle cx="140" cy="80" r="4"/><circle cx="220" cy="80" r="4"/><circle cx="300" cy="80" r="4"/>
-              <circle cx="100" cy="320" r="4"/><circle cx="180" cy="320" r="4"/><circle cx="260" cy="320" r="4"/><circle cx="340" cy="320" r="4"/>
-            </g>
-          </svg>
-        </div>
-      </article>
-
-      <article class="panel" id="p-officine">
-        <div>
-          <div class="panel__index">03</div>
-          <h3 class="panel__name">L'Officine</h3>
-          <p class="panel__body">Une solution de gestion pensée pour la pharmacie d'officine : stocks, ventes, ordonnances et suivi des patients, réunis dans un outil simple et rapide.</p>
+          <h3 class="panel__name">Alda Pharma</h3>
+          <p class="panel__body">Le logiciel d'officine pensé pour les pharmacies. Chaque pharmacie a son application et sa propre base : vos chiffres ne croisent jamais ceux d'un confrère, et rien ne quitte votre officine sans que vous le décidiez.</p>
           <ul class="panel__list">
             <li><span>Pour</span><span>Pharmaciens d'officine &amp; équipes</span></li>
-            <li><span>Modules</span><span>Stocks, caisse, ordonnances</span></li>
-            <li><span>Atout</span><span>Simple, rapide, fiable</span></li>
+            <li><span>Modules</span><span>Stocks, ventes, ordonnances</span></li>
+            <li><span>Promesse</span><span>Vos données restent les vôtres</span></li>
           </ul>
         </div>
-        <div class="panel__visual" aria-hidden="true">
-          <svg viewBox="0 0 400 400" fill="none" stroke="#0b0b0c" stroke-width="1">
-            <rect x="60" y="60" width="280" height="280" stroke="#e1e1e5"/>
-            <g class="js-cross">
-              <path d="M170 110 H230 V170 H290 V230 H230 V290 H170 V230 H110 V170 H170 Z"/>
-            </g>
-            <g class="js-bars" fill="#0b0b0c" stroke="none">
-              <rect x="80" y="300" width="20" height="20"/><rect x="110" y="290" width="20" height="30"/><rect x="140" y="280" width="20" height="40" fill="#1d3bff"/>
-            </g>
-          </svg>
-        </div>
+        <figure class="shot" data-hover="Alda Pharma">
+          <div class="shot__bar"><i></i><i></i><i></i><span>Alda Pharma — logiciel d'officine</span></div>
+          <img src="assets/img/alda-pharma-apercu.webp" alt="Aperçu du site Alda Pharma : « Vos données restent les vôtres »" width="1600" height="595" loading="lazy">
+        </figure>
       </article>
 
     </div>
   </section>
 
-  <!-- innovation -->
-  <section class="sec" id="innovation">
-    <div class="sec__head">
-      <span class="mono muted">(03) — Innovation</span>
-      <h2 class="sec__title"><span class="line"><span class="js-up">Ce qui nous</span></span><span class="line"><span class="js-up">fait avancer</span></span></h2>
-    </div>
-
-    <div class="grid">
-      <div class="cell reveal" data-hover>
-        <span class="mono">i.01</span>
-        <div>
-          <svg class="cell__icon" viewBox="0 0 44 44" fill="none" stroke="#0b0b0c" stroke-width="1"><circle cx="22" cy="22" r="20"/><g class="spin" style="transform-origin:22px 22px"><path d="M22 6v32M6 22h32"/></g></svg>
-          <h3>IA appliquée à la santé</h3>
-          <p>Des modèles utiles au quotidien des soignants, évalués avec eux, sur leurs cas réels.</p>
-        </div>
-      </div>
-      <div class="cell reveal" data-hover>
-        <span class="mono">i.02</span>
-        <div>
-          <svg class="cell__icon" viewBox="0 0 44 44" fill="none" stroke="#0b0b0c" stroke-width="1"><rect x="4" y="4" width="36" height="36"/><g class="spin" style="transform-origin:22px 22px"><path d="M4 22h36M22 4v36"/></g></svg>
-          <h3>Données &amp; interopérabilité</h3>
-          <p>Faire dialoguer pharmacies, cliniques et distributeurs, avec des données structurées et protégées.</p>
-        </div>
-      </div>
-      <div class="cell reveal" data-hover>
-        <span class="mono">i.03</span>
-        <div>
-          <svg class="cell__icon" viewBox="0 0 44 44" fill="none" stroke="#0b0b0c" stroke-width="1"><rect x="12" y="2" width="20" height="40" rx="4"/><g class="spin" style="transform-origin:22px 22px"><circle cx="22" cy="22" r="5"/></g></svg>
-          <h3>Santé mobile</h3>
-          <p>Des outils qui fonctionnent sur mobile, même avec une connexion limitée.</p>
-        </div>
-      </div>
-      <div class="cell reveal" data-hover>
-        <span class="mono">i.04</span>
-        <div>
-          <svg class="cell__icon" viewBox="0 0 44 44" fill="none" stroke="#0b0b0c" stroke-width="1"><path d="M4 30h36M4 14h36"/><g class="spin" style="transform-origin:22px 22px"><circle cx="12" cy="22" r="3"/><circle cx="32" cy="22" r="3"/></g></svg>
-          <h3>Traçabilité du médicament</h3>
-          <p>Suivre chaque produit, du fournisseur au patient, pour lutter contre les ruptures et les contrefaçons.</p>
-        </div>
-      </div>
-      <div class="cell reveal" data-hover>
-        <span class="mono">i.05</span>
-        <div>
-          <svg class="cell__icon" viewBox="0 0 44 44" fill="none" stroke="#0b0b0c" stroke-width="1"><path d="M4 16 22 6l18 10-18 10z"/><g class="spin" style="transform-origin:22px 22px"><path d="M12 21v10c6 5 14 5 20 0V21"/></g></svg>
-          <h3>Formation des professionnels</h3>
-          <p>Accompagner les équipes de santé dans la prise en main des outils numériques.</p>
-        </div>
-      </div>
-      <div class="cell reveal" data-hover>
-        <span class="mono">i.06</span>
-        <div>
-          <svg class="cell__icon" viewBox="0 0 44 44" fill="none" stroke="#0b0b0c" stroke-width="1"><circle cx="22" cy="22" r="20"/><g class="spin" style="transform-origin:22px 22px"><ellipse cx="22" cy="22" rx="9" ry="20"/></g></svg>
-          <h3>Afrique numérique</h3>
-          <p>Bâtir localement des technologies à portée continentale, avec un impact durable.</p>
-        </div>
-      </div>
-    </div>
+  <!-- Brazzaville photo -->
+  <section class="photo" aria-label="Brazzaville">
+    <img src="assets/img/brazzaville-pont.webp" alt="Vue aérienne d'un pont à haubans à Brazzaville" loading="lazy">
+    <div class="photo__big">Made in<br>Brazzaville</div>
+    <div class="photo__cap mono"><span>Brazzaville, République du Congo</span><span>4°16′S — 15°17′E</span></div>
   </section>
 
-  <!-- approach -->
+  <!-- team teaser -->
   <section class="sec" style="padding-top:0">
     <div class="sec__head">
-      <span class="mono muted">(04) — Approche</span>
-      <h2 class="sec__title"><span class="line"><span class="js-up">Notre</span></span><span class="line"><span class="js-up">méthode</span></span></h2>
+      <span class="mono muted">(04) — Équipe</span>
+      <h2 class="sec__title"><span class="line"><span class="js-up">Les</span></span><span class="line"><span class="js-up">fondateurs</span></span></h2>
     </div>
-    <div class="steps">
-      <div class="step reveal"><span class="mono muted">Étape 01</span><h3>Écouter</h3><p>Nous partons du terrain : les besoins des soignants, des pharmaciens et de leurs patients.</p></div>
-      <div class="step reveal"><span class="mono muted">Étape 02</span><h3>Concevoir</h3><p>Prototypes rapides, testés avec les utilisateurs, jusqu'à un outil vraiment simple.</p></div>
-      <div class="step reveal"><span class="mono muted">Étape 03</span><h3>Déployer</h3><p>Mise en service, formation des équipes et accompagnement au quotidien.</p></div>
-      <div class="step reveal"><span class="mono muted">Étape 04</span><h3>Améliorer</h3><p>Mesurer, écouter à nouveau et faire évoluer nos produits en continu.</p></div>
+    <div class="team-teaser">
+      <div class="reveal">
+        <p style="font-family:var(--display);font-weight:300;font-size:clamp(22px,2.2vw,34px);line-height:1.2;letter-spacing:-.01em;max-width:22ch">Un ingénieur et un pharmacien, réunis pour mettre la technologie au service de la santé.</p>
+        <a class="btn" href="about.html" data-hover style="margin-top:32px"><span>Notre histoire</span><span>→</span></a>
+      </div>
+      <a href="about.html#alex" data-hover="Lire">
+        <div class="portrait"><img src="assets/img/alex-ondongo.webp" alt="Alex Ondongo" loading="lazy"></div>
+        <div class="portrait__name"><b>Alex Ondongo</b><span class="mono muted">DG · CTO</span></div>
+      </a>
+      <a href="about.html#celestin" data-hover="Lire">
+        <div class="portrait"><img src="assets/img/celestin-bongui.webp" alt="Célestin Junior Bongui" loading="lazy"></div>
+        <div class="portrait__name"><b>Célestin J. Bongui</b><span class="mono muted">CDO</span></div>
+      </a>
     </div>
   </section>
 
-  <!-- contact -->
+  <!-- projects teaser -->
+  <section class="sec" id="projets" style="padding-top:0">
+    <div class="sec__head">
+      <span class="mono muted">(05) — Projets</span>
+      <h2 class="sec__title"><span class="line"><span class="js-up">À venir</span></span></h2>
+    </div>
+    <div class="domains">
+      <a class="domain" href="projets.html#fintech" data-hover="Voir">
+        <span class="mono">P.01</span>
+        <span class="domain__name">Fintech</span>
+        <span class="domain__desc">Paiements et gestion financière simplifiés pour les pharmacies et les entreprises.</span>
+        <span class="tag mono" style="justify-self:end;font-size:10px">Bientôt</span>
+      </a>
+      <a class="domain" href="projets.html" data-hover="Voir">
+        <span class="mono">P.02+</span>
+        <span class="domain__name">Et après</span>
+        <span class="domain__desc">Traçabilité du médicament, données de santé, formation des professionnels…</span>
+        <svg class="domain__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
   <section class="contact" id="contact">
-    <span class="mono muted">(05) — Contact</span>
+    <span class="mono muted">(06) — Contact</span>
     <h2 class="contact__big" style="margin-top:28px">
       <span class="line"><span class="js-up">Construisons</span></span>
       <span class="line"><span class="js-up">ensemble</span></span>
@@ -483,16 +259,16 @@ img{display:block;max-width:100%}
     <div style="margin-top:40px" class="reveal">
       <a class="btn" href="mailto:contact@alda-cg.com" data-hover><span>Démarrer un projet</span><span>→</span></a>
     </div>
-
     <div class="contact__row">
       <div class="reveal"><span class="mono">Email</span><a href="mailto:contact@alda-cg.com" data-hover>contact@alda-cg.com</a></div>
       <div class="reveal"><span class="mono">Téléphone</span><a href="tel:+242050366565" data-hover>+242 05 036 65 65</a><br><a href="tel:+242065740441" data-hover>+242 06 574 04 41</a></div>
       <div class="reveal"><span class="mono">Adresse</span><p>Brazzaville<br>République du Congo</p></div>
-      <div class="reveal"><span class="mono">Domaines</span><p>AI Kimia<br>Pharma Alda<br>L'Officine</p></div>
+      <div class="reveal"><span class="mono">Domaines</span><p>AI Kimia<br>Alda Pharma</p></div>
     </div>
-
     <footer class="foot mono">
       <span>© <span class="js-year">2026</span> ALDA. Tous droits réservés.</span>
+      <a href="projets.html" data-hover>Projets</a>
+      <a href="about.html" data-hover>À propos</a>
       <a href="#top" data-hover>Haut de page ↑</a>
     </footer>
   </section>
@@ -501,210 +277,8 @@ img{display:block;max-width:100%}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-(function(){
-  var root = document.documentElement;
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hasGsap = typeof window.gsap !== 'undefined';
-  document.querySelector('.js-year').textContent = new Date().getFullYear();
-
-  // Brazzaville clock (UTC+1)
-  var clock = document.querySelector('.js-clock');
-  function tick(){
-    try{
-      clock.textContent = new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Brazzaville'});
-    }catch(e){ clock.textContent = ''; }
-  }
-  tick(); setInterval(tick, 15000);
-
-  // split helpers
-  document.querySelectorAll('.js-split').forEach(function(el){
-    el.innerHTML = el.textContent.split('').map(function(c){ return '<span class="char">'+c+'</span>'; }).join('');
-  });
-  document.querySelectorAll('.js-words').forEach(function(el){
-    el.innerHTML = el.textContent.split(' ').map(function(w){ return '<span class="w">'+w+'</span>'; }).join(' ');
-  });
-
-  function done(){
-    document.body.classList.remove('loading');
-    var l = document.querySelector('.loader'); if (l) l.remove();
-  }
-
-  if (!hasGsap || reduced){
-    root.classList.add('reduced');
-    done();
-    return;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  // smooth scroll
-  var lenis = null;
-  if (typeof window.Lenis !== 'undefined'){
-    lenis = new Lenis({ duration: 1.15, smoothWheel: true });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
-    gsap.ticker.lagSmoothing(0);
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
-      a.addEventListener('click', function(e){
-        var id = a.getAttribute('href');
-        var t = id === '#top' ? 0 : document.querySelector(id);
-        if (t === null) return;
-        e.preventDefault();
-        lenis.scrollTo(t, { offset: 0, duration: 1.6 });
-      });
-    });
-  }
-
-  // preloader
-  var counter = { v: 0 };
-  var countEl = document.querySelector('.js-count');
-  var intro = gsap.timeline();
-  intro
-    .to(counter, { v: 100, duration: 1.6, ease: 'power2.inOut', onUpdate: function(){ countEl.textContent = Math.round(counter.v); } })
-    .to('.loader__bar', { scaleX: 1, duration: 1.6, ease: 'power2.inOut' }, 0)
-    .to('.loader', { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '+=0.15')
-    .add(done)
-    .to('.hero__title .char', { y: 0, duration: 1.4, ease: 'expo.out', stagger: 0.07 }, '-=0.55')
-    .to('.hero .reveal', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', stagger: 0.08 }, '-=1.1');
-
-  // hero title parallax / stretch on scroll
-  gsap.to('.hero__title', {
-    yPercent: 18, letterSpacing: '-0.02em', ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-  });
-
-  // nav hide on scroll down
-  var nav = document.querySelector('.nav');
-  ScrollTrigger.create({
-    start: 'top -120',
-    onUpdate: function(self){ nav.classList.toggle('is-hidden', self.direction === 1); }
-  });
-
-  // marquee: velocity aware
-  var track = document.querySelector('.js-marquee');
-  var half = track.scrollWidth / 2;
-  var x = 0, speed = 0.6, boost = 0;
-  gsap.ticker.add(function(){
-    x -= speed + boost;
-    if (x <= -half) x += half;
-    if (x > 0) x -= half;
-    track.style.transform = 'translate3d(' + x + 'px,0,0)';
-    boost *= 0.92;
-  });
-  if (lenis) lenis.on('scroll', function(e){ boost = Math.max(-8, Math.min(8, e.velocity * 0.4)); });
-
-  // manifesto words scrub
-  gsap.to('.manifesto__text .w', {
-    opacity: 1, stagger: 0.1, ease: 'none',
-    scrollTrigger: { trigger: '.manifesto__text', start: 'top 80%', end: 'bottom 45%', scrub: true }
-  });
-
-  // headings slide up
-  gsap.utils.toArray('.js-up').forEach(function(el){
-    gsap.from(el, { yPercent: 110, duration: 1.3, ease: 'expo.out',
-      scrollTrigger: { trigger: el, start: 'top 90%' } });
-  });
-
-  // generic reveals
-  ScrollTrigger.batch('.reveal:not(.hero .reveal)', {
-    start: 'top 88%',
-    onEnter: function(b){ gsap.to(b, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08 }); }
-  });
-
-  // domain rows: line draw in
-  gsap.from('.domain', { yPercent: 40, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: 0.1,
-    scrollTrigger: { trigger: '.domains', start: 'top 80%' } });
-
-  // horizontal product scroll (desktop only)
-  var mm = gsap.matchMedia();
-  mm.add('(min-width: 861px)', function(){
-    var htrack = document.querySelector('.js-htrack');
-    var tween = gsap.to(htrack, {
-      x: function(){ return -(htrack.scrollWidth - window.innerWidth); },
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.js-hscroll', start: 'top top', pin: true, scrub: 1,
-        end: function(){ return '+=' + (htrack.scrollWidth - window.innerWidth); },
-        invalidateOnRefresh: true
-      }
-    });
-    gsap.utils.toArray('.panel').forEach(function(p){
-      gsap.from(p.querySelectorAll('.panel__name, .panel__body, .panel__list li'), {
-        y: 50, opacity: 0, stagger: 0.06, duration: 1, ease: 'expo.out',
-        scrollTrigger: { trigger: p, containerAnimation: tween, start: 'left 70%' }
-      });
-      gsap.from(p.querySelector('.panel__index'), {
-        xPercent: 40, ease: 'none',
-        scrollTrigger: { trigger: p, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true }
-      });
-    });
-  });
-  mm.add('(max-width: 860px)', function(){
-    gsap.utils.toArray('.panel').forEach(function(p){
-      gsap.from(p.children, { y: 50, opacity: 0, stagger: 0.1, duration: 1, ease: 'expo.out',
-        scrollTrigger: { trigger: p, start: 'top 80%' } });
-    });
-  });
-
-  // svg idle motion
-  gsap.to('.js-orbit', { rotation: 360, svgOrigin: '200 200', duration: 40, ease: 'none', repeat: -1 });
-  gsap.to('.js-nodes', { rotation: 45, svgOrigin: '200 200', duration: 6, ease: 'sine.inOut', repeat: -1, yoyo: true });
-  gsap.to('.js-pills', { rotation: -20, svgOrigin: '200 200', duration: 5, ease: 'sine.inOut', repeat: -1, yoyo: true });
-  gsap.to('.js-dots circle', { y: function(i){ return i < 4 ? 10 : -10; }, duration: 1.4, ease: 'sine.inOut', stagger: 0.12, repeat: -1, yoyo: true });
-  gsap.to('.js-cross', { rotation: 90, svgOrigin: '200 200', duration: 3, ease: 'expo.inOut', repeat: -1, repeatDelay: 1.2 });
-  gsap.to('.js-bars rect', { scaleY: 2.2, transformOrigin: 'bottom', duration: 1.2, ease: 'sine.inOut', stagger: 0.2, repeat: -1, yoyo: true });
-
-  // contact big text slight skew with scroll
-  gsap.from('.contact__big', { letterSpacing: '0.02em', ease: 'none',
-    scrollTrigger: { trigger: '.contact', start: 'top bottom', end: 'top 30%', scrub: true } });
-
-  // ---- cursor ----
-  var cursor = document.querySelector('.cursor');
-  var label = document.querySelector('.cursor__label');
-  var cx = gsap.quickTo(cursor, 'x', { duration: 0.35, ease: 'power3' });
-  var cy = gsap.quickTo(cursor, 'y', { duration: 0.35, ease: 'power3' });
-  var lx = gsap.quickTo(label, 'x', { duration: 0.35, ease: 'power3' });
-  var ly = gsap.quickTo(label, 'y', { duration: 0.35, ease: 'power3' });
-  window.addEventListener('mousemove', function(e){ cx(e.clientX); cy(e.clientY); lx(e.clientX); ly(e.clientY); });
-  document.querySelectorAll('[data-hover]').forEach(function(el){
-    el.addEventListener('mouseenter', function(){
-      cursor.classList.add('is-hover');
-      var t = el.getAttribute('data-hover');
-      if (t){ label.textContent = t; label.style.opacity = 1; }
-    });
-    el.addEventListener('mouseleave', function(){ cursor.classList.remove('is-hover'); label.style.opacity = 0; });
-  });
-
-  // magnetic buttons
-  document.querySelectorAll('.btn').forEach(function(b){
-    b.addEventListener('mousemove', function(e){
-      var r = b.getBoundingClientRect();
-      gsap.to(b, { x: (e.clientX - r.left - r.width/2) * 0.25, y: (e.clientY - r.top - r.height/2) * 0.35, duration: 0.6, ease: 'power3' });
-    });
-    b.addEventListener('mouseleave', function(){ gsap.to(b, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1,0.4)' }); });
-  });
-
-  // floating preview on domain hover
-  var preview = document.querySelector('.js-preview');
-  var previews = {
-    kimia: '<svg viewBox="0 0 320 220" width="100%" height="100%"><rect width="320" height="220" fill="#0b0b0c"/><circle cx="160" cy="110" r="70" fill="none" stroke="#fff" stroke-width="1"/><circle cx="160" cy="110" r="10" fill="#1d3bff"/><text x="20" y="200" fill="#fff" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="1">AI KIMIA — IA SANTÉ</text></svg>',
-    pharma: '<svg viewBox="0 0 320 220" width="100%" height="100%"><rect width="320" height="220" fill="#1d3bff"/><rect x="70" y="80" width="180" height="60" rx="30" fill="none" stroke="#fff"/><rect x="160" y="80" width="90" height="60" rx="30" fill="#fff"/><text x="20" y="200" fill="#fff" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="1">PHARMA ALDA — MÉDICAMENT</text></svg>',
-    officine: '<svg viewBox="0 0 320 220" width="100%" height="100%"><rect width="320" height="220" fill="#f1f1f3"/><path d="M145 50h30v45h45v30h-45v45h-30v-45h-45v-30h45z" fill="none" stroke="#0b0b0c"/><text x="20" y="200" fill="#0b0b0c" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="1">L\'OFFICINE — GESTION</text></svg>'
-  };
-  var px = gsap.quickTo(preview, 'x', { duration: 0.6, ease: 'power3' });
-  var py = gsap.quickTo(preview, 'y', { duration: 0.6, ease: 'power3' });
-  window.addEventListener('mousemove', function(e){ px(e.clientX + 40); py(e.clientY); });
-  document.querySelectorAll('.domain').forEach(function(d){
-    d.addEventListener('mouseenter', function(){
-      preview.innerHTML = previews[d.getAttribute('data-preview')] || '';
-      gsap.to(preview, { opacity: 1, scale: 1, duration: 0.5, ease: 'expo.out' });
-    });
-    d.addEventListener('mouseleave', function(){ gsap.to(preview, { opacity: 0, scale: 0.6, duration: 0.4, ease: 'expo.out' }); });
-  });
-
-  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
-})();
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/africa.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>
