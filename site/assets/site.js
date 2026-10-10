@@ -9,11 +9,11 @@
   $$('.js-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
   // Brazzaville clock
-  var clock = $('.js-clock');
+  var clocks = $$('.js-clock');
   function tick() {
-    if (!clock) return;
-    try { clock.textContent = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Brazzaville' }); }
-    catch (e) { clock.textContent = ''; }
+    var t = '';
+    try { t = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Brazzaville' }); } catch (e) {}
+    clocks.forEach(function (c) { c.textContent = t; });
   }
   tick(); setInterval(tick, 15000);
 
@@ -39,6 +39,15 @@
     document.body.classList.remove('loading');
     var l = $('.loader'); if (l) l.remove();
   }
+
+  // contact form: open the visitor's mail app with the message pre-filled
+  var form = $('.js-mailform');
+  if (form) form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = form.elements;
+    var body = 'Nom : ' + f.nom.value + '\nEmail : ' + f.email.value + '\nEntreprise : ' + f.entreprise.value + '\n\n' + f.message.value;
+    window.location.href = 'mailto:contact@alda-cg.com?subject=' + encodeURIComponent('[Site ALDA] ' + f.sujet.value) + '&body=' + encodeURIComponent(body);
+  });
 
   if (!hasGsap || reduced) {
     root.classList.add('reduced');
@@ -249,4 +258,5 @@
   }
 
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+
 })();

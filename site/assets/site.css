@@ -297,3 +297,46 @@ img{display:block;max-width:100%}
 .nav__logo:hover .mono{color:var(--accent);transition:color .35s ease}
 .menu a.menu__link{transition:color .35s ease,padding-left .5s cubic-bezier(.2,.8,.2,1)}
 .menu a.menu__link:hover,.menu a.menu__link.is-active{color:var(--accent);padding-left:12px}
+
+/* ================= v3 ================= */
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ALDA word sphere in the hero */
+.hero__sphere{position:absolute;left:0;right:0;top:150px;bottom:150px;width:100%;height:calc(100% - 300px);z-index:0;cursor:grab;touch-action:pan-y}
+.hero__sphere:active{cursor:grabbing}
+.hero>*:not(.hero__sphere){position:relative;z-index:1}
+.hero__sub{margin-top:auto}
+@media (max-width:860px){.hero__sphere{top:210px;bottom:170px;height:calc(100% - 380px)}}
+
+/* more breathing room between blocks */
+.sec{padding:clamp(140px,17vw,280px) var(--gutter)}
+.sec__head{margin-bottom:clamp(64px,9vw,140px)}
+.manifesto__foot{margin-top:clamp(72px,9vw,140px)}
+.contact{padding-top:clamp(140px,17vw,280px)}
+.photo{margin:clamp(40px,6vw,96px) 0}
+.domains + .domain__preview{margin-bottom:0}
+
+/* footer */
+.foot{padding:40px var(--gutter) 40px;margin-top:0;align-items:center}
+.foot__links{display:flex;gap:24px;flex-wrap:wrap}
+.foot__links a{transition:color .35s}
+.foot__links a:hover,.foot a:hover{color:var(--accent)}
+
+/* contact page */
+.contact-page{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(48px,8vw,160px);align-items:start}
+.contact-page__info{display:grid;gap:40px;position:sticky;top:120px}
+.contact-page__info a,.contact-page__info p{display:block;font-family:var(--display);font-weight:300;font-size:clamp(22px,2.2vw,34px);letter-spacing:-.01em;line-height:1.25}
+.contact-page__info a{transition:color .35s}
+.contact-page__info a:hover{color:var(--accent)}
+.contact-page__info .mono{display:block;margin-bottom:10px}
+.form{display:grid;gap:8px}
+.form>.mono{margin-bottom:24px}
+.field{display:grid;gap:8px;padding:18px 0;border-bottom:1px solid var(--line);transition:border-color .4s}
+.field:focus-within{border-color:var(--ink)}
+.field .mono{color:var(--muted);transition:color .4s}
+.field:focus-within .mono{color:var(--accent)}
+.field input,.field textarea,.field select{border:0;outline:0;background:transparent;font:300 clamp(18px,1.6vw,24px)/1.4 var(--display);color:var(--ink);padding:4px 0;width:100%;resize:vertical;border-radius:0;-webkit-appearance:none;appearance:none}
+.field select{cursor:pointer}
+.form .btn{justify-self:start;margin-top:32px;background:none;cursor:pointer;color:var(--ink)}
+.form__note{font-size:13px;color:var(--muted);margin-top:12px}
+@media (max-width:860px){.contact-page{grid-template-columns:1fr}.contact-page__info{position:relative;top:0}}

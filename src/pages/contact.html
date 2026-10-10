@@ -1,0 +1,33 @@
+  <section class="page-hero" style="min-height:70svh">
+    <span class="mono muted reveal">(00) — Contact</span>
+    <h1 class="page-hero__title" aria-label="Contact"><span class="line js-split">Contact</span></h1>
+    <div class="page-hero__row">
+      <p class="reveal">Un projet, une question, un partenariat ? Écrivez-nous, nous répondons rapidement.</p>
+      <a class="btn reveal" href="mailto:contact@alda-cg.com" data-hover style="justify-self:end"><span>contact@alda-cg.com</span><span>→</span></a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="contact-page">
+      <div class="contact-page__info">
+        <div class="reveal"><span class="mono muted">Email</span><a href="mailto:contact@alda-cg.com" data-hover>contact@alda-cg.com</a></div>
+        <div class="reveal"><span class="mono muted">Téléphone</span><a href="tel:+242050366565" data-hover>+242 05 036 65 65</a><a href="tel:+242065740441" data-hover>+242 06 574 04 41</a></div>
+        <div class="reveal"><span class="mono muted">Adresse</span><p>Brazzaville<br>République du Congo</p></div>
+        <div class="reveal"><span class="mono muted">Heure locale</span><p><span class="js-clock">--:--</span> (Brazzaville)</p></div>
+      </div>
+      <form class="form reveal js-mailform" action="mailto:contact@alda-cg.com" method="post" enctype="text/plain">
+        <span class="mono muted">(01) — Écrivez-nous</span>
+        <label class="field"><span class="mono">Nom</span><input name="nom" required autocomplete="name"></label>
+        <label class="field"><span class="mono">Email</span><input name="email" type="email" required autocomplete="email"></label>
+        <label class="field"><span class="mono">Entreprise</span><input name="entreprise" autocomplete="organization"></label>
+        <label class="field"><span class="mono">Sujet</span>
+          <select name="sujet">
+            <option>Nouveau projet</option><option>AI Kimia</option><option>Alda Pharma</option><option>Partenariat</option><option>Autre</option>
+          </select>
+        </label>
+        <label class="field"><span class="mono">Message</span><textarea name="message" rows="5" required></textarea></label>
+        <button class="btn" type="submit" data-hover><span>Envoyer</span><span>→</span></button>
+        <p class="form__note">Le bouton ouvre votre messagerie avec le message prêt à envoyer.</p>
+      </form>
+    </div>
+  </section>

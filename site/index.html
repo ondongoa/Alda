@@ -6,8 +6,9 @@
 <title>ALDA — Solutions numériques pour l'Afrique</title>
 <meta name="description" content="ALDA, entreprise numérique basée à Brazzaville. Intelligence artificielle, logiciels métiers, fintech et transformation numérique pour les entreprises et les professionnels en Afrique.">
 <meta property="og:title" content="ALDA — Solutions numériques pour l'Afrique">
-<meta property="og:description" content="Intelligence artificielle, logiciels métiers et fintech : ALDA accélère la transformation numérique de l'Afrique.">
-<meta property="og:image" content="assets/img/brazzaville-pont.webp">
+<meta property="og:description" content="ALDA, entreprise numérique basée à Brazzaville. Intelligence artificielle, logiciels métiers, fintech et transformation numérique pour les entreprises et les professionnels en Afrique.">
+<meta property="og:image" content="https://alda-cg.com/assets/img/brazzaville-pont.webp">
+<link rel="canonical" href="https://alda-cg.com/">
 <link rel="icon" href="assets/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,21 +22,20 @@
   <div class="loader__count"><span class="js-count">0</span></div>
   <div class="loader__bar"></div>
 </div>
-
 <div class="cursor" aria-hidden="true"></div>
 <div class="cursor__label" aria-hidden="true">Voir</div>
 
 <header class="nav">
-  <a href="#top" class="nav__logo" data-hover>
+  <a href="/" class="nav__logo" data-hover>
     <img src="assets/logo.jpg" alt="Logo ALDA">
     <span class="mono">ALDA</span>
   </a>
   <nav class="nav__links mono" aria-label="Navigation principale">
-    <a href="#studio" data-hover>Studio</a>
-    <a href="#domaines" data-hover>Domaines</a>
+    <a href="/studio/" data-hover>Studio</a>
+    <a href="/domaines/" data-hover>Domaines</a>
     <a href="/projets/" data-hover>Projets</a>
     <a href="/a-propos/" data-hover>À propos</a>
-    <a href="#contact" data-hover>Contact</a>
+    <a href="/contact/" data-hover>Contact</a>
   </nav>
   <div class="nav__meta mono">
     <span class="clock"><span class="js-clock">--:--</span> BZV</span>
@@ -47,11 +47,12 @@
 <div class="menu" aria-label="Menu mobile">
   <button class="menu__close mono js-menu-close" aria-label="Fermer le menu">Fermer</button>
   <nav>
-    <a class="menu__link" href="#studio">Studio</a>
-    <a class="menu__link" href="#domaines">Domaines</a>
+    <a class="menu__link is-active" aria-current="page" href="/">Accueil</a>
+    <a class="menu__link" href="/studio/">Studio</a>
+    <a class="menu__link" href="/domaines/">Domaines</a>
     <a class="menu__link" href="/projets/">Projets</a>
     <a class="menu__link" href="/a-propos/">À propos</a>
-    <a class="menu__link" href="#contact">Contact</a>
+    <a class="menu__link" href="/contact/">Contact</a>
   </nav>
   <div class="mono muted">contact@alda-cg.com</div>
 </div>
@@ -65,7 +66,8 @@
       <div class="hero__spec reveal"><b>03.</b><span>IA · Logiciels · Fintech</span></div>
       <div class="hero__spec reveal"><b>04.</b><span>Pour toute l'Afrique</span></div>
     </div>
-    <h1 class="hero__title" aria-label="ALDA"><span class="line js-split">ALDA</span></h1>
+    <h1 class="sr-only">ALDA — solutions numériques pour l'Afrique</h1>
+    <canvas class="hero__sphere js-alda-sphere" aria-hidden="true"></canvas>
     <div class="hero__sub">
       <p class="hero__lead reveal">Des solutions numériques qui transforment l'Afrique.</p>
       <div class="hero__scroll mono reveal"><i></i>Défiler</div>
@@ -122,19 +124,20 @@
     </div>
   </section>
 
+
   <section class="sec" id="domaines">
     <div class="sec__head">
       <span class="mono muted">(03) — Domaines</span>
       <h2 class="sec__title"><span class="line"><span class="js-up">Nos</span></span><span class="line"><span class="js-up">domaines</span></span></h2>
     </div>
     <div class="domains">
-      <a class="domain" href="#p-kimia" data-preview="kimia" data-hover="Voir">
+      <a class="domain" href="/domaines/#p-kimia" data-preview="kimia" data-hover="Voir">
         <span class="mono">01</span>
         <span class="domain__name">AI Kimia</span>
         <span class="domain__desc">L'intelligence artificielle au service des professionnels de santé.</span>
         <svg class="domain__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <a class="domain" href="#p-pharma" data-preview="pharma" data-hover="Voir">
+      <a class="domain" href="/domaines/#p-pharma" data-preview="pharma" data-hover="Voir">
         <span class="mono">02</span>
         <span class="domain__name">Alda Pharma</span>
         <span class="domain__desc">Le logiciel d'officine où vos données restent les vôtres.</span>
@@ -146,58 +149,6 @@
     <template id="preview-pharma"><img src="assets/img/alda-pharma-apercu.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 50%"></template>
   </section>
 
-  <section class="hscroll js-hscroll">
-    <div class="hscroll__track js-htrack">
-
-      <article class="panel" id="p-kimia">
-        <div>
-          <div class="panel__index">01</div>
-          <h3 class="panel__name">AI Kimia</h3>
-          <p class="panel__body">Un assistant d'intelligence artificielle conçu pour les professionnels de santé : accès rapide à une information médicale fiable, aide à la décision et gain de temps au quotidien.</p>
-          <ul class="panel__list">
-            <li><span>Pour</span><span>Médecins, infirmiers, pharmaciens</span></li>
-            <li><span>Technologie</span><span>IA générative, données médicales</span></li>
-            <li><span>Priorité</span><span>Fiabilité &amp; confidentialité</span></li>
-          </ul>
-        </div>
-        <div class="panel__visual" aria-hidden="true">
-          <svg viewBox="0 0 400 400" fill="none" stroke="#0b0b0c" stroke-width="1">
-            <g class="js-orbit">
-              <circle cx="200" cy="200" r="170" stroke="#e1e1e5"/>
-              <circle cx="200" cy="200" r="120" stroke="#e1e1e5"/>
-              <circle cx="200" cy="200" r="70"/>
-              <circle cx="370" cy="200" r="6" fill="#1d3bff" stroke="none"/>
-              <circle cx="80" cy="200" r="5" fill="#0b0b0c" stroke="none"/>
-              <circle cx="200" cy="30" r="4" fill="#0b0b0c" stroke="none"/>
-            </g>
-            <g class="js-nodes">
-              <path d="M200 130 L260 200 L200 270 L140 200 Z"/>
-              <path d="M140 200 H260 M200 130 V270"/>
-              <circle cx="200" cy="200" r="10" fill="#0b0b0c"/>
-            </g>
-          </svg>
-        </div>
-      </article>
-
-      <article class="panel" id="p-pharma">
-        <div>
-          <div class="panel__index">02</div>
-          <h3 class="panel__name">Alda Pharma</h3>
-          <p class="panel__body">Le logiciel d'officine pensé pour les pharmacies. Chaque pharmacie a son application et sa propre base : vos chiffres ne croisent jamais ceux d'un confrère, et rien ne quitte votre officine sans que vous le décidiez.</p>
-          <ul class="panel__list">
-            <li><span>Pour</span><span>Pharmaciens d'officine &amp; équipes</span></li>
-            <li><span>Modules</span><span>Stocks, ventes, ordonnances</span></li>
-            <li><span>Promesse</span><span>Vos données restent les vôtres</span></li>
-          </ul>
-        </div>
-        <figure class="shot" data-hover="Alda Pharma">
-          <div class="shot__bar"><i></i><i></i><i></i><span>Alda Pharma — logiciel d'officine</span></div>
-          <img src="assets/img/alda-pharma-apercu.webp" alt="Aperçu du site Alda Pharma : « Vos données restent les vôtres »" width="1600" height="595" loading="lazy">
-        </figure>
-      </article>
-
-    </div>
-  </section>
 
   <!-- projects teaser -->
   <section class="sec" id="projets" style="padding-top:0">
@@ -221,14 +172,15 @@
     </div>
   </section>
 
+
   <section class="contact" id="contact">
-    <span class="mono muted">(05) — Contact</span>
+    <span class="mono muted">Contact</span>
     <h2 class="contact__big" style="margin-top:28px">
       <span class="line"><span class="js-up">Construisons</span></span>
       <span class="line"><span class="js-up">ensemble</span></span>
     </h2>
     <div style="margin-top:40px" class="reveal">
-      <a class="btn" href="mailto:contact@alda-cg.com" data-hover><span>Démarrer un projet</span><span>→</span></a>
+      <a class="btn" href="/contact/" data-hover><span>Démarrer un projet</span><span>→</span></a>
     </div>
     <div class="contact__row">
       <div class="reveal"><span class="mono">Email</span><a href="mailto:contact@alda-cg.com" data-hover>contact@alda-cg.com</a></div>
@@ -236,19 +188,26 @@
       <div class="reveal"><span class="mono">Adresse</span><p>Brazzaville<br>République du Congo</p></div>
       <div class="reveal"><span class="mono">Domaines</span><p>AI Kimia<br>Alda Pharma</p></div>
     </div>
-    <footer class="foot mono">
-      <span>© <span class="js-year">2026</span> ALDA. Tous droits réservés.</span>
+  </section>
+
+  <footer class="foot wrap mono">
+    <span>© <span class="js-year">2026</span> ALDA. Tous droits réservés.</span>
+    <nav class="foot__links">
+      <a href="/studio/" data-hover>Studio</a>
+      <a href="/domaines/" data-hover>Domaines</a>
       <a href="/projets/" data-hover>Projets</a>
       <a href="/a-propos/" data-hover>À propos</a>
-      <a href="#top" data-hover>Haut de page ↑</a>
-    </footer>
-  </section>
+      <a href="/contact/" data-hover>Contact</a>
+    </nav>
+    <a href="#top" data-hover>Haut de page ↑</a>
+  </footer>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/sphere.js"></script>
 <script src="assets/africa.js"></script>
 <script src="assets/site.js"></script>
 </body>
